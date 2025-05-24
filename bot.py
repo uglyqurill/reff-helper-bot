@@ -12,6 +12,8 @@ print("Loaded BOT_TOKEN:", BOT_TOKEN)
 
 # 2) Инициализируем бота
 bot = telebot.TeleBot(BOT_TOKEN)
+bot.remove_webhook()
+
 
 # 3) Хендлер для /start и /help
 @bot.message_handler(commands=['start', 'help'])
@@ -48,5 +50,7 @@ def handle_doi(message):
 
 # 5) Запуск
 if __name__ == '__main__':
+    bot.remove_webhook()
     print("Bot is polling...")
     bot.infinity_polling(skip_pending=True)
+
